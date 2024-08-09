@@ -1,152 +1,206 @@
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    background-color: #f0f2f5;
-  }
-  
+  font-family: 'Arial', sans-serif;
+  background-color: #f0f4f8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  padding: 0 15px; /* Add padding to the body for better mobile spacing */
+}
+
+.todo-app {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  width: 100%;
+  max-width: 600px; /* Set maximum width for large screens */
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+h2 {
+  font-size: 2rem;
+  color: #333;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Input Section */
+.input-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.input-section input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 10px;
+  border: 2px solid #007bff;
+  border-radius: 8px;
+  box-shadow: 0 5px 10px rgba(0, 123, 255, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.input-section input:focus {
+  box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3);
+}
+
+.input-section button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background-color: #28a745;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.input-section button:hover {
+  background-color: #218838;
+  box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3);
+}
+
+/* Filter and Sort Section */
+.filter-sort-section {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.filter-sort-section select {
+  width: 48%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 2px solid #6c757d;
+  background-color: #fff;
+  box-shadow: 0 5px 10px rgba(108, 117, 125, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.filter-sort-section select:focus {
+  box-shadow: 0 5px 15px rgba(108, 117, 125, 0.3);
+}
+
+/* Todo List */
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+.todo-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  margin-bottom: 10px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 5px 10px rgba(108, 117, 125, 0.1);
+  transition: box-shadow 0.3s ease;
+  animation: slideIn 0.3s ease;
+}
+
+.todo-item:hover {
+  box-shadow: 0 5px 15px rgba(108, 117, 125, 0.3);
+}
+
+.todo-item input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+.todo-item span {
+  flex-grow: 1;
+  margin-right: 10px;
+}
+
+.todo-item span.completed {
+  text-decoration: line-through;
+  color: #6c757d;
+}
+
+/* Buttons */
+.edit-btn, .save-btn, .cancel-btn, .delete-btn {
+  margin-left: 5px;
+  padding: 7px 12px;
+  border: none;
+  border-radius: 8px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s ease;
+}
+
+.edit-btn:hover, .save-btn:hover, .cancel-btn:hover, .delete-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 10px rgba(0, 123, 255, 0.3);
+}
+
+.delete-btn {
+  background-color: #dc3545;
+}
+
+.delete-btn:hover {
+  background-color: #c82333;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
   .todo-app {
-    max-width: 500px;
-    margin: 50px auto;
     padding: 20px;
-    background-color: #ffffff;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    text-align: center;
+    max-width: 100%; /* Make the container take full width on small screens */
   }
-  
+
   h2 {
-    font-size: 24px;
-    color: #333;
-    margin-bottom: 20px;
+    font-size: 1.5rem;
   }
-  
-  p {
-    font-size: 18px;
-    color: #666;
-    margin-bottom: 20px;
+
+  .input-section input {
+    padding: 10px;
   }
-  
-  .input-section {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 10px;
-    margin-bottom: 20px;
+
+  .input-section button {
+    padding: 10px;
   }
-  
-  input[type="text"] {
-    padding: 12px 15px;
-    font-size: 16px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    flex: 1;
-    min-width: 200px;
-  }
-  
-  button {
-    padding: 12px 20px;
-    font-size: 16px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  button:hover {
-    background-color: #0056b3;
-  }
-  
-  button.remove-btn {
-    background-color: #dc3545;
-  }
-  
-  button.remove-btn:hover {
-    background-color: #c82333;
-  }
-  
-  ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .todo-item {
-    display: flex;
-    justify-content: space-between;
+
+  .filter-sort-section {
+    flex-direction: column;
     align-items: center;
-    padding: 10px 0;
-    border-bottom: 1px solid #ddd;
-    transition: background-color 0.3s ease;
   }
-  
-  .todo-item:hover {
-    background-color: #f9f9f9;
+
+  .filter-sort-section select {
+    width: 100%;
+    margin-bottom: 10px; 
   }
-  
-  .todo-item:last-child {
-    border-bottom: none;
+
+  .todo-item {
+    flex-direction: column;
+    align-items: flex-start;
   }
-  
+
   .todo-item input[type="checkbox"] {
-    margin-right: 10px;
+    margin-bottom: 10px;
   }
-  
-  .todo-item .completed {
-    text-decoration: line-through;
-    color: #999;
+
+  .edit-btn, .save-btn, .cancel-btn, .delete-btn {
+    width: 100%; 
+    margin: 5px 0;
   }
-  
-  .todo-item button.delete-btn {
-    background-color: #dc3545;
-    padding: 6px 10px;
-    border-radius: 5px;
-    font-size: 14px;
-  }
-  
-  .todo-item button.delete-btn:hover {
-    background-color: #c82333;
-  }
-  
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(-10px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
-  @keyframes fadeOut {
-    from {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    to {
-      opacity: 0;
-      transform: translateY(10px);
-    }
-  }
-  
-  .add-animation {
-    animation: fadeIn 0.3s ease-in;
-  }
-  
-  .remove-animation {
-    animation: fadeOut 0.3s ease-out;
-  }
-  
-  @media (min-width: 600px) {
-    .input-section {
-      flex-wrap: nowrap;
-    }
-  
-    input[type="text"] {
-      min-width: auto;
-    }
-  }
+}
