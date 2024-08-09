@@ -9,16 +9,13 @@ interface TodoItem {
   }
 
 export const Todo: React.FC = () => {
-    const [todos, setTodos] = useState<TodoItem[]>([]);
+  const storedTodos = localStorage.getItem('todos');
+  
+  // Initialize todos with parsed localStorage data or an empty array
+  const [todos, setTodos] = useState<TodoItem[]>(storedTodos ? JSON.parse(storedTodos) : []);
     const [inputValue, setInputValue] = useState<string>('');
   
-    useEffect(() => {
-      const storedTodos = localStorage.getItem('todos');
-      if (storedTodos) {
-        setTodos(JSON.parse(storedTodos));
-      }
-    }, []);
-  
+    
     useEffect(() => {
       localStorage.setItem('todos', JSON.stringify(todos));
     }, [todos]);
